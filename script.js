@@ -3,7 +3,8 @@ const algoliaPlacesApiKey = '1131438afb49f60a48ed468c5af189b8';
 const mapboxApiToken = 'pk.eyJ1Ijoia3Jva3JvYiIsImEiOiJja2YzcmcyNDkwNXVpMnRtZGwxb2MzNWtvIn0.69leM_6Roh26Ju7Lqb2pwQ';
 //const taxiFareApiUrl = 'http://localhost:8000/predict_fare/';
 //const taxiFareApiUrl = 'https://wagon-exo-z7fyqqvx3a-ew.a.run.app/predict_fare';
-const taxiFareApiUrl = 'https://taxifare.lewagon.ai/predict_fare'
+const taxiFareApiUrl = 'https://taxifare.lewagon.ai/predict_fare/';
+// const taxiFareApiUrl = 'https://recap-api-qrdclojgja-ew.a.run.app';
 
 const displayMap = (start, stop) => {
   mapboxgl.accessToken = mapboxApiToken;
@@ -210,6 +211,7 @@ const predict = () => {
         document.getElementById('fare').classList.remove('d-none');
         const fareResult = document.getElementById('predicted-fare');
         const fare = Math.round(data['prediction'] * 100) / 100
+        console.log(data)
         fareResult.innerText = `$${fare}`;
       })
       .catch((error) => {
